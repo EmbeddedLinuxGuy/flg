@@ -28,11 +28,11 @@ soma.page.player.getNumberOfChannelsCB = function(data) {
 	if (data.result) {
 		//success case
 		
-		$('.init-channels').html(data);
+		$('.init-channels').html(data.channels);
 		
-		soma.page.player.getInitialChannelStates(data);
+		soma.page.player.getInitialChannelStates(data.channels);
 		
-		soma.page.player.NUM_CHANNELS = data;
+		soma.page.player.NUM_CHANNELS = data.channels;
 		
 	} else {
 		//failure case
@@ -62,7 +62,7 @@ soma.page.player.getChannelState = function(thisChannel) {
 soma.page.player.getChannelStateCB = function(thisChannel, data) {
 
 	soma.page.player.CHANNEL_DATA[thisChannel] = soma.page.player.CHANNEL_DATA[thisChannel] || {};
-	soma.page.player.CHANNEL_DATA[thisChannel].state = data;
+	soma.page.player.CHANNEL_DATA[thisChannel].state = data.state;
 	
 	soma.page.player.getChannelPattern(thisChannel);
 
@@ -211,7 +211,7 @@ soma.page.player.changePatternCB = function(thisChannel, data) {
 }
 
 soma.page.player.getPatterns = function() {
-	somaWS.serviceCall("patterns", null, soma.page.player.getPatternsCB, soma.page.player.getPatternsCB);	
+	somaWS.serviceCall("pattern", null, soma.page.player.getPatternsCB, soma.page.player.getPatternsCB);	
 }
 
 soma.page.player.getPatternsCB = function(data) {
@@ -219,9 +219,9 @@ soma.page.player.getPatternsCB = function(data) {
 	if (data.result) {
 		//success case
 
-		$('.init-patterns').html(data);		
+		$('.init-patterns').html(data.patterns);		
 		
-		soma.page.player.PATTERNS = data.split('\n');
+		soma.page.player.PATTERNS = data.patterns.split('\n');
 		
 		//trace(soma.page.player.PATTERNS);
 		
