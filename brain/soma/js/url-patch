@@ -1,0 +1,11 @@
+--- soma-services.js.orig	2010-06-20 23:25:26.000000000 -0700
++++ soma-services.js	2010-06-20 23:26:35.000000000 -0700
+@@ -6,7 +6,7 @@
+ //	somaWS.serviceQueue = [];
+ //	somaWS.queueLocked = false;
+ 	somaWS.queueFlag = true;
+-    somaWS.serviceMessageURL = "/soma/services";
++    somaWS.serviceMessageURL = "";
+ 
+ // Common function used by all pages that wish to communicate with
+ // the soma web services. 
